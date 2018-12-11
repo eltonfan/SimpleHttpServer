@@ -197,7 +197,10 @@ namespace SimpleHttpServer
                 }
 
                 string value = line.Substring(pos, line.Length - pos);
-                headers.Add(name, value);
+                if (headers.ContainsKey(name))
+                    headers[name] = value;
+                else
+                    headers.Add(name, value);
             }
 
             string content = null;
